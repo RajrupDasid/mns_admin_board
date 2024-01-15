@@ -1,0 +1,250 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "mynearshop",
+    "dateExported": "2024-01-14T14:18:34.277Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "users",
+            "containerId": "",
+            "created": "2024-01-10T15:48:38.218Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "d9d86623-663d-486c-a997-afa83169b7c8",
+            "colId": "20279bc6-f965-473b-9dfa-9ca2e9531f42",
+            "containerId": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "login",
+            "url": "http://localhost:3000/api/v1/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-01-10T17:24:23.938Z",
+            "modified": "2024-01-14T14:12:45.730Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\": \"agent1\",\n  \"password\": \"secret password\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7e047bbd-98f2-459e-a975-81bba8421330",
+            "colId": "20279bc6-f965-473b-9dfa-9ca2e9531f42",
+            "containerId": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "user",
+            "url": "http://localhost:3000/api/v1/user",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-01-10T17:47:38.623Z",
+            "modified": "2024-01-13T14:45:03.667Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmaXJzdCB2ZW5kb3IiLCJyb2xlIjoiVkVORE9SIiwiaWF0IjoxNzA1MTU3MDcyfQ.T3FeogTLbxY9cWS7hJGZSbVXjAAjo839IYBhUEVzm5Y"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9b80b1ff-5d41-40b5-8f2d-be9ae1df056a",
+            "colId": "20279bc6-f965-473b-9dfa-9ca2e9531f42",
+            "containerId": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "create vendor",
+            "url": "http://localhost:3000/api/v1/create/vendor",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-01-13T12:09:26.311Z",
+            "modified": "2024-01-14T13:51:24.169Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZ2VudDEiLCJyb2xlIjoiQUdFTlQiLCJpZCI6ImU4YjM0YjRmLWY2MmEtNDI0YS05MDM4LWU3MWViODg2MGNkMyIsImlhdCI6MTcwNTIzOTk4MX0.nkkEwnBDsV9NfzHH0B5zZFsSJebQ-K5WLKFH987TvoQ"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "userId",
+                        "value": "vendor1"
+                    },
+                    {
+                        "name": "password",
+                        "value": "screte password"
+                    },
+                    {
+                        "name": "vendorName",
+                        "value": "SUBID DAS"
+                    },
+                    {
+                        "name": "storeName",
+                        "value": "tapri wala"
+                    },
+                    {
+                        "name": "category",
+                        "value": "others"
+                    },
+                    {
+                        "name": "address",
+                        "value": "kolkata"
+                    },
+                    {
+                        "name": "email",
+                        "value": "tapri@wala.com"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "8902175210"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "idProof",
+                        "value": "c:\\Users\\itsme\\OneDrive\\Desktop\\Quickstart\\poster.png"
+                    },
+                    {
+                        "name": "storeDoc",
+                        "value": "c:\\Users\\itsme\\OneDrive\\Desktop\\Quickstart\\t7.png"
+                    },
+                    {
+                        "name": "storePhotos",
+                        "value": "c:\\Users\\itsme\\OneDrive\\Desktop\\Quickstart\\t8.png"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "f96f914d-d83a-4142-b7dd-0d84544bfdd9",
+            "colId": "20279bc6-f965-473b-9dfa-9ca2e9531f42",
+            "containerId": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "create admin",
+            "url": "http://localhost:3000/api/v1/admin/create",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-01-14T12:16:30.118Z",
+            "modified": "2024-01-14T12:18:08.685Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\": \"admin123\",\n  \"password\": \"secret password\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e25b2395-3046-4fac-ba74-8ec87d98edf0",
+            "colId": "20279bc6-f965-473b-9dfa-9ca2e9531f42",
+            "containerId": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "create team-leader",
+            "url": "http://localhost:3000/api/v1/team-leader/create",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-01-14T12:19:47.280Z",
+            "modified": "2024-01-14T13:33:19.529Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZG1pbjEyMyIsInJvbGUiOiJBRE1JTiIsImlkIjoiY2E4MWJlOGEtNmU4My00ODU4LWE4MjMtODMwNDE4NzgxZTZkIiwiaWF0IjoxNzA1MjM2NTM0fQ.NFD3P8YALfcU3ho3ZlFNxbREnZ7X2XsBAR9RQOt6g58"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\": \"team leader1\",\n  \"password\": \"secret password\",\n  \"name\": \"SUBID DAS\",\n  \"email\": \"itsmesubid@gmail.com\",\n  \"phone\": \"+918902175210\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "edfc575b-9e04-41e1-b57c-f4e6f35f0b81",
+            "colId": "20279bc6-f965-473b-9dfa-9ca2e9531f42",
+            "containerId": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "create agent",
+            "url": "http://localhost:3000/api/v1/agent/create",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-01-14T13:33:58.927Z",
+            "modified": "2024-01-14T13:35:57.148Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZWFtIGxlYWRlcjEiLCJyb2xlIjoiVEVBTV9MRUFERVIiLCJpZCI6ImExYzEyYjhhLTcyZmUtNGNlYi05MWZjLTUxN2E5ZWVjNTEyOSIsImlhdCI6MTcwNTIzOTI3MH0.FqW6cVuScodHWvMlPx74VIFOX-4DwHbohZkhtmi2Njc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\": \"agent1\",\n  \"password\": \"secret password\",\n  \"name\": \"SUBID DAS\",\n  \"email\": \"itsmesubid@gmail.com\",\n  \"phone\": \"+918902175210\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8b9057e7-4fe3-48fa-b35f-10b09e022abb",
+            "colId": "20279bc6-f965-473b-9dfa-9ca2e9531f42",
+            "containerId": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "get team-leaders",
+            "url": "http://localhost:3000/api/v1/team-leaders",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-01-14T13:52:15.764Z",
+            "modified": "2024-01-14T13:53:43.877Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZG1pbjEyMyIsInJvbGUiOiJBRE1JTiIsImlkIjoiY2E4MWJlOGEtNmU4My00ODU4LWE4MjMtODMwNDE4NzgxZTZkIiwiaWF0IjoxNzA1MjQwMzk3fQ.q4U0RpqcN9y6-ejwWY9BsP6oglexRBPP4mAKcd6DM1c"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a0a1f162-1275-4cf9-894e-6e439f6d76cb",
+            "colId": "20279bc6-f965-473b-9dfa-9ca2e9531f42",
+            "containerId": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "get agents",
+            "url": "http://localhost:3000/api/v1/agents",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-01-14T13:54:06.813Z",
+            "modified": "2024-01-14T13:54:51.931Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZWFtIGxlYWRlcjEiLCJyb2xlIjoiVEVBTV9MRUFERVIiLCJpZCI6ImExYzEyYjhhLTcyZmUtNGNlYi05MWZjLTUxN2E5ZWVjNTEyOSIsImlhdCI6MTcwNTI0MDQ2Nn0.E04iM7alHAvtGaEF9PghaydQVlNHvMatdlxty0K63es"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "540a6334-74ec-4ebc-8c00-e6a819fa20f0",
+            "colId": "20279bc6-f965-473b-9dfa-9ca2e9531f42",
+            "containerId": "ef7edf6f-7cf6-4fea-b300-1ea81474de78",
+            "name": "get vendors",
+            "url": "http://localhost:3000/api/v1/vendors",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-01-14T14:12:29.103Z",
+            "modified": "2024-01-14T14:13:14.226Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZ2VudDEiLCJyb2xlIjoiQUdFTlQiLCJpZCI6ImU4YjM0YjRmLWY2MmEtNDI0YS05MDM4LWU3MWViODg2MGNkMyIsImlhdCI6MTcwNTI0MTU2NX0.Lk99T3H9e5BVfyIZQyYGYYxFrDI-HXw0W4hxTA0Wl_o"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

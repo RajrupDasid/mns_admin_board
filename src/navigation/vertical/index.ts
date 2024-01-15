@@ -31,13 +31,33 @@ const navigation = (): VerticalNavItemsType => {
         path:'/account-settings'
       },
       {
+        sectionTitle: 'Pages'
+      },
+      {
         icon: AccountCogOutline,
-        title: 'Create User',
-        path: '/createuser'
+        title: 'Create Agent',
+        path: '/createagent'
 
       },
       {
-        sectionTitle: 'Pages'
+        icon: AccountCogOutline,
+        title: 'Create Vendor',
+        path: '/createvendors'
+      },
+      {
+        icon: AccountCogOutline,
+        title: 'Create TeamLeaders',
+        path: '/createteamleaders'
+      },
+      {
+        icon: AccountCogOutline,
+        title: 'Create Admin',
+        path: '/createadmin'
+      },
+      {
+        icon:AccountCogOutline,
+        title: 'Users List',
+        path:'/userslist'
       },
       {
         title:'Logout',
