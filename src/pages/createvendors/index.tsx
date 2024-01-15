@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import Cookies from 'universal-cookie'
+
 const CreateVendor = () => {
   const [formData, setFormData] = useState({
     userId: '',
@@ -24,6 +26,9 @@ const CreateVendor = () => {
   }
 
   const handleFormData = async () => {
+    const getCookie = new Cookies()
+    const session_data = getCookie.get('session_token')
+
     try {
       const response = await fetch(
         'http://ec2-65-0-75-157.ap-south-1.compute.amazonaws.com:3000/api/v1/create/vendor',
@@ -31,7 +36,8 @@ const CreateVendor = () => {
           method: 'POST',
           body: JSON.stringify(formData),
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'auth-token': session_data
           }
         }
       )
