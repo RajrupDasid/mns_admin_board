@@ -55,13 +55,21 @@ const navigation = (): VerticalNavItemsType => {
       },
     ]
 
-  }else if(session_token && user_type === "TEAMLEADER" || user_type === "ADMIN"){
+  }else if(session_token && user_type === "ADMIN"){
     return[
       {
-        icon: AccountCogOutline,
-        title: 'Create Agent',
-        path: '/createagent'
-
+        title:'Dashboard',
+        icon:HomeOutline,
+        path:'/'
+      },
+      {
+        title:'Account Settings',
+        icon:HomeOutline,
+        path:'/account-settings'
+      },
+      
+      {
+        sectionTitle: 'Pages'
       },
     {
       icon: AccountCogOutline,
@@ -69,14 +77,9 @@ const navigation = (): VerticalNavItemsType => {
       path: '/createteamleaders'
     },
     {
-      icon: AccountCogOutline,
-      title: 'Create Admin',
-      path: '/createadmin'
-    },
-    {
       icon:AccountCogOutline,
-      title: 'Users List',
-      path:'/userslist'
+      title: 'Teamleader List',
+      path:'/teamleaderlist'
     },
     {
       title:'Logout',
@@ -90,6 +93,39 @@ const navigation = (): VerticalNavItemsType => {
       openInNewTab: true
     }
   ] 
+  }else if(session_token && user_type === "TEAM_LEADER"){
+    return[
+      {
+        title:'Dashboard',
+        icon:HomeOutline,
+        path:'/'
+      },
+      {
+        title:'Account Settings',
+        icon:HomeOutline,
+        path:'/account-settings'
+      },
+      
+      {
+        sectionTitle: 'Pages'
+      },
+      {
+      icon: AccountCogOutline,
+      title: 'Create Agent',
+      path: '/createagent'
+
+    },
+    {
+      icon: AccountCogOutline,
+      title: 'Agent List',
+      path: '/agentslist'
+    },
+    {
+      title:'Logout',
+      icon:AccountCogOutline,
+      path:'/logout'
+    },
+  ]
   }
   else{
     return  [

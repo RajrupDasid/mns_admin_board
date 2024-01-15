@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Cookies from 'universal-cookie'
 
 const CreateTeamLeaders = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,8 @@ const CreateTeamLeaders = () => {
   }
 
   const handleFormData = async () => {
+    const getCookie = new Cookies()
+    const session_data = getCookie.get('session_token')
     try {
       const response = await fetch(
         'http://ec2-65-0-75-157.ap-south-1.compute.amazonaws.com:3000/api/v1/team-leader/create',
@@ -25,7 +28,8 @@ const CreateTeamLeaders = () => {
           method: 'POST',
           body: JSON.stringify(formData),
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'auth-token': session_data
           }
         }
       )

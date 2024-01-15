@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Cookies from 'universal-cookie'
 
-const CreateUser = () => {
+const CreateAgent = () => {
   const [formData, setFormData] = useState({
     userId: '',
     password: '',
@@ -169,4 +169,4 @@ const styles = {
   }
 }
 
-export default CreateUser
+export default CreateAgent
