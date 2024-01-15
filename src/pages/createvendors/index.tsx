@@ -2,8 +2,22 @@ import React, { useState } from 'react'
 
 import Cookies from 'universal-cookie'
 
+interface FormData {
+  userId: string
+  vendorName: string
+  storeName: string
+  category: string
+  address: string
+  email: string
+  phone: string
+  password: string
+  idProof: File
+  storeDoc: File
+  storePhotos: File
+  [key: string]: string | File
+}
 const CreateVendor = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     userId: '',
     vendorName: '',
     storeName: '',
@@ -12,31 +26,29 @@ const CreateVendor = () => {
     email: '',
     phone: '',
     password: '',
-    idProof: null,
-    storeDoc: null,
-    storePhotos: null
+    idProof: new File([], ''),
+    storeDoc: new File([], ''),
+    storePhotos: new File([], '')
   })
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value
-    }))
-  }
 
   const handleFormData = async () => {
     const getCookie = new Cookies()
     const session_data = getCookie.get('session_token')
 
     try {
+      const formDataToSend = new FormData()
+
+      // Append each form field to the FormData object
+      Object.keys(formData).forEach(key => {
+        formDataToSend.append(key, formData[key])
+      })
+
       const response = await fetch(
         'http://ec2-65-0-75-157.ap-south-1.compute.amazonaws.com:3000/api/v1/create/vendor',
         {
           method: 'POST',
-          body: JSON.stringify(formData),
+          body: formDataToSend,
           headers: {
-            'Content-Type': 'application/json',
             'auth-token': session_data
           }
         }
@@ -47,7 +59,6 @@ const CreateVendor = () => {
         alert('Form submitted successfully!')
       } else {
         const errorData = await response.json()
-
         alert(`Error submitting form: ${response.status} - ${errorData.message || 'Unknown error'}`)
       }
     } catch (error) {
@@ -55,7 +66,29 @@ const CreateVendor = () => {
       alert('An unexpected error occurred. Please try again later.')
     }
   }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    const { name, value } = e.target
 
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name } = e.target
+    const file = e.target.files && e.target.files[0]
+
+    // Use an empty File as the default value if file is null
+    const defaultFile = new File([], '')
+
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: file || defaultFile
+    }))
+  }
   const handleSubmit = (e: any) => {
     e.preventDefault()
     handleFormData()
@@ -64,7 +97,7 @@ const CreateVendor = () => {
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>Create Vendors</h2>
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <form onSubmit={handleSubmit} style={styles.form} encType='multipart/form-data'>
         <div style={styles.formGroup}>
           <label htmlFor='userId' style={styles.label}>
             User ID:
@@ -178,7 +211,7 @@ const CreateVendor = () => {
             type='file'
             id='idProof'
             name='idProof'
-            onChange={handleChange}
+            onChange={handleFileChange}
             style={styles.input}
             accept='.pdf, .jpg, .jpeg, .png'
             required
@@ -193,7 +226,7 @@ const CreateVendor = () => {
             type='file'
             id='storeDoc'
             name='storeDoc'
-            onChange={handleChange}
+            onChange={handleFileChange}
             style={styles.input}
             accept='.pdf, .jpg, .jpeg, .png'
             required
@@ -208,10 +241,9 @@ const CreateVendor = () => {
             type='file'
             id='storePhotos'
             name='storePhotos'
-            onChange={handleChange}
+            onChange={handleFileChange}
             style={styles.input}
-            accept='image/*'
-            multiple
+            accept='.pdf, .jpg, .jpeg, .png'
             required
           />
         </div>
@@ -269,6 +301,13 @@ const styles = {
     color: 'white' as const,
     border: 'none' as const,
     cursor: 'pointer' as const
+  },
+  dropzone: {
+    border: '2px dashed #4CAF50',
+    borderRadius: '4px',
+    padding: '20px',
+    textAlign: 'center',
+    cursor: 'pointer'
   }
 }
 

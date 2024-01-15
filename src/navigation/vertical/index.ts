@@ -21,8 +21,9 @@ import { VerticalNavItemsType } from 'src/@core/layouts/types'
 const navigation = (): VerticalNavItemsType => {
   const cookies = new Cookies();
   const session_token = cookies.get('session_token')
+  const user_type = cookies.get('user_type')
 
-  if(session_token){
+  if(session_token && user_type=="AGENT"){
     return[
       {
         title:'Dashboard',
@@ -39,46 +40,58 @@ const navigation = (): VerticalNavItemsType => {
       },
       {
         icon: AccountCogOutline,
-        title: 'Create Agent',
-        path: '/createagent'
-
-      },
-      {
-        icon: AccountCogOutline,
         title: 'Create Vendor',
         path: '/createvendors'
       },
       {
-        icon: AccountCogOutline,
-        title: 'Create TeamLeaders',
-        path: '/createteamleaders'
-      },
-      {
-        icon: AccountCogOutline,
-        title: 'Create Admin',
-        path: '/createadmin'
-      },
-      {
         icon:AccountCogOutline,
-        title: 'Users List',
-        path:'/userslist'
+        title: 'Vendor List',
+        path:'/vendorlist'
       },
       {
         title:'Logout',
         icon:AccountCogOutline,
         path:'/logout'
       },
-      {
-        title: 'Error',
-        icon: AlertCircleOutline,
-        path: '/pages/error',
-        openInNewTab: true
-      }
-      
-    
     ]
 
-  }else{
+  }else if(session_token && user_type === "TEAMLEADER" || user_type === "ADMIN"){
+    return[
+      {
+        icon: AccountCogOutline,
+        title: 'Create Agent',
+        path: '/createagent'
+
+      },
+    {
+      icon: AccountCogOutline,
+      title: 'Create TeamLeaders',
+      path: '/createteamleaders'
+    },
+    {
+      icon: AccountCogOutline,
+      title: 'Create Admin',
+      path: '/createadmin'
+    },
+    {
+      icon:AccountCogOutline,
+      title: 'Users List',
+      path:'/userslist'
+    },
+    {
+      title:'Logout',
+      icon:AccountCogOutline,
+      path:'/logout'
+    },
+    {
+      title: 'Error',
+      icon: AlertCircleOutline,
+      path: '/pages/error',
+      openInNewTab: true
+    }
+  ] 
+  }
+  else{
     return  [
     {
       title: 'Login',

@@ -115,7 +115,9 @@ const LoginPage = () => {
 
       const cookies = new Cookies()
       cookies.set('session_token', response.data.token, { path: '/', sameSite: 'strict', secure: true })
+      cookies.set('user_type', response.data.role, { path: '/', sameSite: 'strict', secure: true })
       localStorage.setItem('session_token', response.data.token)
+      localStorage.setItem('user_type', response.data.role)
       const nullcookie = new Cookies()
       const voidcookie = nullcookie.get('session_token')
 
